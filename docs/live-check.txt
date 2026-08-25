@@ -1,0 +1,39 @@
+### Empty but Live - proof the page is really live and really works on a phone
+
+URL: https://krcgoktug.github.io/
+
+== HTTP ==
+$ curl -s -o /dev/null -w "%{http_code}" https://krcgoktug.github.io/
+200
+
+== Content served ==
+<title>Göktuğ Karaca</title>
+I build backend services, and I can tell you how each one fails.
+empty but live
+
+== Measured in a real browser at a phone viewport (375x812) ==
+viewport width      375
+body.scrollWidth    375        <- equal, so there is no horizontal overflow
+main width          311        <- 375 minus the 2rem padding on each side
+
+element      left   right   overflows?
+h1            32     343     no
+p.claim       32     343     no
+p.status      32     343     no
+ul (links)    32     343     no
+footer        32     343     no
+
+== A correction worth recording ==
+My first "phone check" used headless Chrome with --window-size=390,844 and the screenshot
+showed the claim and the footer clipped at the right edge. It looked like a clear
+responsive bug and I pushed a fix for it.
+
+It was not a bug. --window-size does not set the layout viewport in headless-new: Chrome
+rendered at a wider viewport and cropped the image to 390px, which looks exactly like
+clipped text. The giveaway was that three genuinely different CSS versions produced
+byte-identical PNGs - 24,917 bytes every time - which is impossible if the CSS were being
+applied. Measuring in a real browser instead of eyeballing a screenshot settled it in one
+call.
+
+The commit message that claimed a fix has been corrected in the repo rather than left to
+stand.

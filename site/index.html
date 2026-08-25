@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Göktuğ Karaca — backend engineer</title>
+<meta name="description" content="Backend engineer. I build services and document how they fail.">
+<meta property="og:title" content="Göktuğ Karaca">
+<meta property="og:description" content="I build backend services, and I can tell you how each one fails.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  /* Week 3 identity kit as tokens - one place to change the palette. */
+  :root {
+    --ink:    #12161C;
+    --paper:  #FBFBF9;
+    --main:   #1F4B6E;
+    --accent: #B4531F;
+    --muted:  #646669;
+    --rule:   #E2E2DE;
+    --card:   #FFFFFF;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #FBFBF9; --paper: #12161C; --main: #7FB2D8; --accent: #E08A4E;
+      --muted: #9A9CA0; --rule: #262C35; --card: #171C24;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .wrap { max-width: 44rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+
+  header { border-bottom: 1px solid var(--rule); padding-bottom: 2rem; margin-bottom: 2.5rem; }
+  h1 { font-size: clamp(2rem, 6vw, 2.9rem); margin: 0 0 .4rem; letter-spacing: -.02em; }
+  .claim { color: var(--main); font-size: clamp(1.05rem, 3.5vw, 1.25rem); margin: 0 0 1.4rem; font-weight: 600; }
+  .intro { color: var(--muted); margin: 0 0 1.6rem; }
+
+  nav.links { display: flex; flex-wrap: wrap; gap: .6rem; }
+  nav.links a {
+    display: inline-block; padding: .4rem .85rem; border: 1px solid var(--rule);
+    border-radius: 999px; text-decoration: none; color: var(--ink); font-size: .92rem;
+  }
+  nav.links a:hover { border-color: var(--main); color: var(--main); }
+
+  h2 {
+    font-size: 1.35rem; margin: 3rem 0 .4rem; letter-spacing: -.01em;
+    padding-top: .5rem; border-top: 1px solid var(--rule);
+  }
+  .section-note { color: var(--muted); font-size: .93rem; margin: 0 0 1.5rem; }
+
+  article {
+    background: var(--card); border: 1px solid var(--rule); border-radius: 12px;
+    padding: 1.15rem 1.3rem; margin-bottom: 1rem;
+  }
+  article h3 { margin: 0 0 .3rem; font-size: 1.08rem; }
+  article h3 a { color: var(--ink); text-decoration: none; }
+  article h3 a:hover { color: var(--main); }
+  article p { margin: 0 0 .7rem; font-size: .96rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .tag {
+    font-family: var(--mono); font-size: .74rem; color: var(--muted);
+    border: 1px solid var(--rule); border-radius: 5px; padding: .1rem .45rem;
+  }
+  .evidence { border-left: 3px solid var(--accent); padding-left: .85rem; margin: .8rem 0 0; }
+  .evidence code { font-family: var(--mono); font-size: .82rem; color: var(--muted); }
+
+  .pending {
+    border: 1px dashed var(--rule); border-radius: 12px; padding: 1.1rem 1.3rem;
+    color: var(--muted); font-size: .94rem;
+  }
+  a { color: var(--main); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  footer {
+    margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule);
+    color: var(--muted); font-size: .86rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Göktuğ Karaca</h1>
+  <p class="claim">I build backend services, and I can tell you how each one fails.</p>
+  <p class="intro">
+    Computer engineering student, backend focus: Python and FastAPI, Postgres and SQLite,
+    Docker, JWT auth. What I care about is the part most projects skip — knowing where a
+    service breaks, and writing that down where anyone can check it.
+  </p>
+  <nav class="links">
+    <a href="https://github.com/krcgoktug">GitHub</a>
+    <a href="mailto:karacagoktug73@gmail.com">Email</a>
+  </nav>
+</header>
+
+<h2>What I'm building</h2>
+<p class="section-note">
+  Every repository below is public and every claim in it is reproducible. Where something
+  is unfinished or broken, the README says so.
+</p>
+
+<article>
+  <h3><a href="https://github.com/krcgoktug/flyrank-capstone-metering-billing">Usage metering &amp; billing engine</a></h3>
+  <p>
+    A SaaS billing backend built to stay correct when clients retry, customers land exactly
+    on a quota boundary, and Stripe delivers the same webhook twice. Money is integer
+    microcents end to end; floats never enter the data model.
+  </p>
+  <div class="tags"><span class="tag">FastAPI</span><span class="tag">Postgres</span><span class="tag">idempotency</span><span class="tag">Stripe test mode</span></div>
+  <div class="evidence"><code>18 tests · one idempotency key survives 12 concurrent retries</code></div>
+</article>
+
+<article>
+  <h3><a href="https://github.com/krcgoktug/flyrank-auth-api">Auth API</a></h3>
+  <p>
+    Sign up, log in, log out, and routes that actually check. The token is verified twice —
+    locally against the signing secret, then against the identity provider — because only
+    the second check notices a session that was revoked after the token was issued.
+  </p>
+  <div class="tags"><span class="tag">JWT</span><span class="tag">Supabase Auth</span><span class="tag">Docker</span><span class="tag">Swagger</span></div>
+  <div class="evidence"><code>after logout, the same token returns 401 — verified, not assumed</code></div>
+</article>
+
+<article>
+  <h3><a href="https://github.com/krcgoktug/flyrank-polite-scraper">The polite scraper</a></h3>
+  <p>
+    Sixty records from three pages, with robots.txt read first and obeyed — an unreadable
+    robots.txt counts as a refusal, not permission. Parsing and validation are separate
+    steps so a bad record lands in a rejects file with its reason instead of quietly
+    becoming a missing row.
+  </p>
+  <div class="tags"><span class="tag">Python</span><span class="tag">rate limiting</span><span class="tag">schema validation</span></div>
+  <div class="evidence"><code>60 records, 0 rejects · finishes cleanly when every page 404s</code></div>
+</article>
+
+<article>
+  <h3><a href="https://github.com/krcgoktug/flyrank-task-api">Task API</a></h3>
+  <p>
+    The same CRUD API rewritten twice — in-memory, then SQLite, then Postgres in Docker
+    Compose — with the routes never changing. <code>git diff</code> on the handler file
+    comes back empty across the last rewrite, which is the whole point.
+  </p>
+  <div class="tags"><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">Postgres</span><span class="tag">Compose</span></div>
+  <div class="evidence"><code>a row survives docker compose down &amp;&amp; up, via a named volume</code></div>
+</article>
+
+<h2>Writing</h2>
+<p class="section-note">Case studies in the four-beat shape: the problem, what I did, what came of it, and what I got wrong.</p>
+<div class="pending">
+  Nothing published here yet. The first case is drafted and the process for adding the
+  next one is written down — see
+  <a href="https://github.com/krcgoktug/flyrank-capstone-fluency">how I add the next case</a>.
+  A monthly reminder is set, so this section either fills up or the reminder gets deleted;
+  it will not quietly stay empty.
+</div>
+
+<h2>Capstone</h2>
+<div class="pending">
+  Two capstones are submitted and in review: the metering and billing engine above, and an
+  AI Fluency impact project. The FlyRank completion badge lands here once the review is done.
+</div>
+
+<h2>Contact</h2>
+<p>
+  The useful thing to say to me is what you are building and where you think it breaks.
+  <a href="mailto:karacagoktug73@gmail.com">karacagoktug73@gmail.com</a> —
+  or open an issue on any repo above.
+</p>
+
+<footer>
+  Plain HTML and CSS on GitHub Pages. No build step, no dependencies, nothing to break —
+  chosen deliberately, and the reasoning is
+  <a href="https://github.com/krcgoktug/krcgoktug.github.io">in the repo</a>.
+</footer>
+
+</div>
+</body>
+</html>
