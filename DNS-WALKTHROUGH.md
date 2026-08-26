@@ -38,6 +38,13 @@ domain later, I will add the record at my DNS provider, verify the domain in Git
 wait for cached old answers to expire. GitHub will still serve the files; DNS will only
 change how visitors find them.
 
+I also maintain [`https://www.goktugkaraca.com`](https://www.goktugkaraca.com), which is
+the personal URL already linked from my LinkedIn profile and CV. Its live DNS result is a
+CNAME from `www.goktugkaraca.com` to `cname.vercel-dns.com`. That is the alias pattern
+described above in a real deployment: the name stays mine while Vercel controls the final
+hosting address. The apex address redirects to the `www` hostname so visitors arrive at
+one canonical URL.
+
 The padlock is the next stage, not a DNS feature. Once the name resolves, GitHub Pages
 presents a TLS certificate for the hostname. The browser checks that certificate before
 sending the HTTPS request. A correct DNS answer can still lead to an HTTPS error if the
