@@ -8,7 +8,7 @@ build, get something on a real URL, then prove you understand what you shipped.
 | **Three Roads: Choose Your Stack with AI** | [STACK-DECISION.md](STACK-DECISION.md) |
 | **Empty but Live: Ship a Blank Page** | **<https://krcgoktug.github.io>** + [docs/live-check.txt](docs/live-check.txt) |
 | **Explain It Like You Built It** | [EXPLAIN-ONE-PIECE.md](EXPLAIN-ONE-PIECE.md) |
-| **Personal Website Live** (PF-04) | the same URL, now a real one-pager |
+| **Personal Website Live** (PF-04) | the same URL, now a real one-pager + [DNS-WALKTHROUGH.md](DNS-WALKTHROUGH.md) |
 
 The site's source is in [`site/`](site) here and deployed from
 [krcgoktug/krcgoktug.github.io](https://github.com/krcgoktug/krcgoktug.github.io).
@@ -24,7 +24,9 @@ four static pages do not need. Full reasoning, including the two roads I rejecte
 "can I maintain this" answer, is in [STACK-DECISION.md](STACK-DECISION.md).
 
 **Live:** <https://krcgoktug.github.io> — HTTP 200, checked at a phone viewport with
-measurements rather than eyeballing.
+measurements rather than eyeballing. The submitted visual evidence is
+[`docs/mobile-live-375x812.png`](docs/mobile-live-375x812.png); the exact layout
+measurements are in [`docs/live-check.txt`](docs/live-check.txt).
 
 **The piece I explained:** the four lines of CSS that centre the page, and the grid column
 underneath them that I did not know existed. That write-up also contains the mistake I
@@ -62,11 +64,12 @@ insurance — just not a fix for anything that was happening.
 
 ---
 
-## Still open
+## Deliberate limits
 
-- **No CV or booking link on the site.** PF-04 asks for both. I do not have a hosted CV or
-  a booking page yet, and inventing URLs that 404 is worse than the gap.
-- **No LinkedIn link**, for the same reason — it belongs there and will go in.
+- **The CV link reuses my existing public resume page.** The private portal upload stays
+  private; the portfolio points at `goktugkaraca.com/resume`, which was already public.
+- **Booking is email-based.** The working booking link opens a message with the subject
+  and requested time fields prepared. There is no extra calendar account to maintain.
 - **The Writing section is empty**, and says so on the page. The process for filling it is
   written down and a monthly reminder is set; if it is still empty in three months, the
   honest move is to delete the section rather than leave it aspirational.
