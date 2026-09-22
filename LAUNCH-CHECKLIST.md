@@ -63,23 +63,43 @@ left one. Same sentence, so it should wrap like one.
 
 ## 4 · Analytics — **not done, and this is what is blocking the submission**
 
-Every free analytics option worth installing — GoatCounter, Cloudflare Web Analytics,
-Umami Cloud, Plausible's free tier — requires creating an account. That is a step I have
-to take myself.
+I checked whether this could be done without an account, because that would have been the
+tidier answer. It cannot, and the near-misses are worth recording so nobody repeats the
+search:
 
-It is about ten lines of work once the account exists. GoatCounter is the one I would
-pick: no cookies, no consent banner needed, and the free tier is free at rest rather than
-free-for-now, which is the same test I applied to the hosting in `STACK-DECISION.md`.
+| Option | Result |
+| --- | --- |
+| CountAPI (`api.countapi.xyz`) | dead — connection refused |
+| CounterAPI v1 | `410 Gone`, deprecated |
+| CounterAPI v2 | `404 Workspace not found` — needs an account |
+| hits.sh | `404` on any key I do not own, and the host answers as `Apache/2.4.38 (Win64)` from 2019 — not something I am putting a beacon to on a live site |
+| GoatCounter / Cloudflare / Umami / Plausible | all work, all require signing up |
 
-```html
-<!-- immediately before </body> in index.html -->
-<script data-goatcounter="https://YOURCODE.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-```
+So it is one free account, and about two minutes after that. **GoatCounter** is the pick:
+no cookies, so no consent banner is needed, and the free tier is free at rest rather than
+free-for-now — the same test I applied to the hosting in `STACK-DECISION.md`.
 
-Then: commit, push, wait for Pages, load the site once, and confirm the hit appears in the
-dashboard. That last step is the one the assignment actually grades — "installed **and
-working**" — so a screenshot of a real recorded visit is the evidence, not the snippet.
+I briefly had a better idea and then discarded it: `goktugkaraca.com` is already mine, on
+Vercel, and Vercel Web Analytics is one toggle on an account I already have. But every
+other assignment this term — *Make It Do Something*, *Open It on Your Phone*, *Break Your
+Own Site* — was submitted against `krcgoktug.github.io`, and quietly changing which site
+"my portfolio" means at the last checkpoint would make those submissions inconsistent. The
+free subdomain stays.
 
-Until that is real, this assignment is three-quarters done and I would rather say so than
-submit it and call the missing quarter an oversight.
+**The three steps:**
+
+1. Sign up at <https://www.goatcounter.com/signup> — pick a code, e.g. `krcgoktug`.
+2. Add one line to `index.html`, immediately before `</body>`:
+
+   ```html
+   <script data-goatcounter="https://krcgoktug.goatcounter.com/count"
+           async src="//gc.zgo.at/count.js"></script>
+   ```
+
+3. Commit, push, wait for Pages (~50 s in practice), then **load the site once and confirm
+   the hit appears in the dashboard.** That last step is the one being graded — "installed
+   **and working**" is evidenced by a real recorded visit, not by the snippet being present
+   in the source.
+
+Until a real visit has been recorded, this assignment is three-quarters done, and I would
+rather say so than submit it and call the missing quarter an oversight.
