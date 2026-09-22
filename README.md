@@ -9,6 +9,9 @@ build, get something on a real URL, then prove you understand what you shipped.
 | **Empty but Live: Ship a Blank Page** | **<https://krcgoktug.github.io>** + [docs/live-check.txt](docs/live-check.txt) |
 | **Explain It Like You Built It** | [EXPLAIN-ONE-PIECE.md](EXPLAIN-ONE-PIECE.md) |
 | **Personal Website Live** (PF-04) | the same URL, now a real one-pager + [DNS-WALKTHROUGH.md](DNS-WALKTHROUGH.md) |
+| **Make It Do Something** (W6) | the live classifier on the site + [THE-ONE-FEATURE.md](THE-ONE-FEATURE.md) |
+| **Open It on Your Phone** (W6) | [MOBILE-FIX-LOG.md](MOBILE-FIX-LOG.md) |
+| **Break Your Own Site** (W7) | [WHERE-IT-BREAKS.md](WHERE-IT-BREAKS.md) |
 
 The site's source is in [`site/`](site) here and deployed from
 [krcgoktug/krcgoktug.github.io](https://github.com/krcgoktug/krcgoktug.github.io).
