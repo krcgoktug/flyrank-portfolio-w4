@@ -4,8 +4,7 @@ FlyRank AI Internship · **Plant Your Flag: Domain + Badge**
 
 Site: <https://krcgoktug.github.io>
 
-Four things this assignment asks for. Three are done and measured. One needs an account
-I have to create myself, and it is the only thing standing between this and a submission.
+Four things this assignment asks for. All four are done and measured.
 
 ---
 
@@ -61,45 +60,62 @@ It also wraps as one run of prose. The first version had the reference as its ow
 item, so at 375 px it sat in a separate right-hand column while the label wrapped in the
 left one. Same sentence, so it should wrap like one.
 
-## 4 · Analytics — **not done, and this is what is blocking the submission**
+## 4 · Analytics — done, and verified by a real recorded visit
 
-I checked whether this could be done without an account, because that would have been the
-tidier answer. It cannot, and the near-misses are worth recording so nobody repeats the
-search:
+**GoatCounter**, at `krcgoktug.goatcounter.com`. No cookies, so the page still needs no
+consent banner — that is the reason it is this and not Google Analytics — and the free
+tier is free at rest rather than free-for-now, the same test I applied to the hosting in
+`STACK-DECISION.md`.
+
+One line, immediately before `</body>`:
+
+```html
+<script data-goatcounter="https://krcgoktug.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+```
+
+**Working, not just installed.** The dashboard has stopped saying *"No data received"* and
+shows:
+
+| | |
+| --- | --- |
+| Visits | **1** |
+| Page | `/` — "Göktuğ Karaca — backend engineer" |
+| Browser | Chrome |
+| System | Windows |
+| Location | Turkey |
+
+I also confirmed on the live page that `window.goatcounter` is defined and
+`goatcounter.count` is a function, and that the `/count` endpoint accepts the beacon. But
+the claim is the recorded visit. A snippet sitting in the source is not evidence that
+anything is being counted, and this assignment grades the second thing.
+
+### What I tried first, so nobody repeats the search
+
+I wanted to avoid the signup entirely. It cannot be done:
 
 | Option | Result |
 | --- | --- |
 | CountAPI (`api.countapi.xyz`) | dead — connection refused |
 | CounterAPI v1 | `410 Gone`, deprecated |
 | CounterAPI v2 | `404 Workspace not found` — needs an account |
-| hits.sh | `404` on any key I do not own, and the host answers as `Apache/2.4.38 (Win64)` from 2019 — not something I am putting a beacon to on a live site |
+| hits.sh | `404` on any key I do not own, and the host answers as `Apache/2.4.38 (Win64)` from 2019 — not somewhere I am pointing a beacon from a live site |
 | GoatCounter / Cloudflare / Umami / Plausible | all work, all require signing up |
 
-So it is one free account, and about two minutes after that. **GoatCounter** is the pick:
-no cookies, so no consent banner is needed, and the free tier is free at rest rather than
-free-for-now — the same test I applied to the hosting in `STACK-DECISION.md`.
+So it was one free account and about two minutes.
 
-I briefly had a better idea and then discarded it: `goktugkaraca.com` is already mine, on
-Vercel, and Vercel Web Analytics is one toggle on an account I already have. But every
-other assignment this term — *Make It Do Something*, *Open It on Your Phone*, *Break Your
-Own Site* — was submitted against `krcgoktug.github.io`, and quietly changing which site
-"my portfolio" means at the last checkpoint would make those submissions inconsistent. The
-free subdomain stays.
+### The cost, written down rather than absorbed
 
-**The three steps:**
+This is now the **third third-party request** on a page whose own `WHERE-IT-BREAKS.md`
+complains about the two Google Fonts ones. That comment sits next to the snippet in
+`index.html`. Self-hosting the fonts would take the page back to one; I still have not
+done it, and the honest reason is that I have not got to it rather than that I decided
+against it.
 
-1. Sign up at <https://www.goatcounter.com/signup> — pick a code, e.g. `krcgoktug`.
-2. Add one line to `index.html`, immediately before `</body>`:
-
-   ```html
-   <script data-goatcounter="https://krcgoktug.goatcounter.com/count"
-           async src="//gc.zgo.at/count.js"></script>
-   ```
-
-3. Commit, push, wait for Pages (~50 s in practice), then **load the site once and confirm
-   the hit appears in the dashboard.** That last step is the one being graded — "installed
-   **and working**" is evidenced by a real recorded visit, not by the snippet being present
-   in the source.
-
-Until a real visit has been recorded, this assignment is three-quarters done, and I would
-rather say so than submit it and call the missing quarter an oversight.
+I briefly had a better idea and discarded it: `goktugkaraca.com` is already mine, on
+Vercel, where Web Analytics is one toggle on an account I already have — and Speed
+Insights is in fact already enabled there. But every other assignment this term — *Make It
+Do Something*, *Open It on Your Phone*, *Break Your Own Site* — was submitted against
+`krcgoktug.github.io`, and quietly changing which site "my portfolio" means at the last
+checkpoint would make those submissions inconsistent. The free subdomain stays, and the
+trade-off is stated rather than hidden.
