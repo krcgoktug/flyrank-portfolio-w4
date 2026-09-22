@@ -33,6 +33,28 @@
     --card:   #FFFFFF;
     --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    /* Type scale. Before this there were 20 font-size declarations producing 15 distinct
+       sizes on one page - .93rem next to .94rem next to .95rem next to .96rem. Nobody can
+       see a 0.16px difference; all it proves is that no one chose it. Seven fixed steps
+       and two fluid ones, and --t-xs is the 12.8px floor from the mobile audit. */
+    --t-body: 17px;     /* the document base; every rem step above is judged against it */
+    --t-xs:   .8rem;    /* 12.8px - mono chips, captions */
+    --t-sm:   .85rem;   /* 13.6px - footer, inline code */
+    --t-md:   .9rem;    /* 14.4px - notes under a heading */
+    --t-base: .95rem;   /* 15.2px - body copy inside cards, controls */
+    --t-lg:   1rem;     /* 16px   - the one answer line that must read first */
+    --t-xl:   1.1rem;   /* 17.6px - card titles */
+    --t-2xl:  1.35rem;  /* 21.6px - section headings */
+    --t-lede: clamp(1.05rem, 3.5vw, 1.25rem);
+    --t-hero: clamp(2rem, 6vw, 2.9rem);
+
+    /* Four radii, each with a job: pill, card, control, chip. There were five, and 10px
+       sat next to 12px for no reason I could name when I looked. */
+    --r-pill: 999px;
+    --r-card: 12px;
+    --r-control: 8px;
+    --r-chip: 4px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -47,13 +69,13 @@
     color: var(--ink);
     font-family: var(--sans);
     line-height: 1.65;
-    font-size: 17px;
+    font-size: var(--t-body);
   }
   .wrap { max-width: 44rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
 
   header { border-bottom: 1px solid var(--rule); padding-bottom: 2rem; margin-bottom: 2.5rem; }
-  h1 { font-size: clamp(2rem, 6vw, 2.9rem); margin: 0 0 .4rem; letter-spacing: -.02em; }
-  .claim { color: var(--main); font-size: clamp(1.05rem, 3.5vw, 1.25rem); margin: 0 0 1.4rem; font-weight: 600; }
+  h1 { font-size: var(--t-hero); margin: 0 0 .4rem; letter-spacing: -.02em; }
+  .claim { color: var(--main); font-size: var(--t-lede); margin: 0 0 1.4rem; font-weight: 600; }
   .intro { color: var(--muted); margin: 0 0 1.6rem; }
 
   nav.links { display: flex; flex-wrap: wrap; gap: .6rem; }
@@ -61,73 +83,73 @@
   nav.links a {
     display: inline-flex; align-items: center; min-height: 44px;
     padding: .55rem 1rem; border: 1px solid var(--rule);
-    border-radius: 999px; text-decoration: none; color: var(--ink); font-size: .95rem;
+    border-radius: var(--r-pill); text-decoration: none; color: var(--ink); font-size: var(--t-base);
   }
   nav.links a:hover { border-color: var(--main); color: var(--main); }
 
   h2 {
-    font-size: 1.35rem; margin: 3rem 0 .4rem; letter-spacing: -.01em;
+    font-size: var(--t-2xl); margin: 3rem 0 .4rem; letter-spacing: -.01em;
     padding-top: .5rem; border-top: 1px solid var(--rule);
   }
-  .section-note { color: var(--muted); font-size: .93rem; margin: 0 0 1.5rem; }
+  .section-note { color: var(--muted); font-size: var(--t-md); margin: 0 0 1.5rem; }
 
   article {
-    background: var(--card); border: 1px solid var(--rule); border-radius: 12px;
+    background: var(--card); border: 1px solid var(--rule); border-radius: var(--r-card);
     padding: 1.15rem 1.3rem; margin-bottom: 1rem;
   }
-  article h3 { margin: 0 0 .3rem; font-size: 1.08rem; line-height: 1.5; }
+  article h3 { margin: 0 0 .3rem; font-size: var(--t-xl); line-height: 1.5; }
   article h3 a { display: inline-block; padding: .25rem 0; }
   article h3 a { color: var(--ink); text-decoration: none; }
   article h3 a:hover { color: var(--main); }
-  article p { margin: 0 0 .7rem; font-size: .96rem; }
+  article p { margin: 0 0 .7rem; font-size: var(--t-base); }
   .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
   .tag {
-    font-family: var(--mono); font-size: .8rem; color: var(--muted);
-    border: 1px solid var(--rule); border-radius: 5px; padding: .1rem .45rem;
+    font-family: var(--mono); font-size: var(--t-xs); color: var(--muted);
+    border: 1px solid var(--rule); border-radius: var(--r-chip); padding: .1rem .45rem;
   }
   .evidence { border-left: 3px solid var(--accent); padding-left: .85rem; margin: .8rem 0 0; }
-  .evidence code { font-family: var(--mono); font-size: .85rem; color: var(--muted); }
+  .evidence code { font-family: var(--mono); font-size: var(--t-sm); color: var(--muted); }
 
   .pending {
-    border: 1px dashed var(--rule); border-radius: 12px; padding: 1.1rem 1.3rem;
-    color: var(--muted); font-size: .94rem;
+    border: 1px dashed var(--rule); border-radius: var(--r-card); padding: 1.1rem 1.3rem;
+    color: var(--muted); font-size: var(--t-md);
   }
   a { color: var(--main); text-underline-offset: 3px; }
   a:hover { color: var(--accent); }
 
   /* --- the one dynamic feature --- */
-  .demo { border: 1px solid var(--rule); border-radius: 12px; padding: 1.2rem 1.3rem; background: var(--card); }
-  .demo label { display: block; font-size: .9rem; color: var(--muted); margin-bottom: .4rem; }
+  .demo { border: 1px solid var(--rule); border-radius: var(--r-card); padding: 1.2rem 1.3rem; background: var(--card); }
+  .demo label { display: block; font-size: var(--t-md); color: var(--muted); margin-bottom: .4rem; }
   .demo textarea {
-    width: 100%; min-height: 76px; padding: .7rem .85rem; font: inherit; font-size: .95rem;
+    width: 100%; min-height: 76px; padding: .7rem .85rem; font: inherit; font-size: var(--t-base);
     color: var(--ink); background: var(--paper); border: 1px solid var(--rule);
-    border-radius: 8px; resize: vertical;
+    border-radius: var(--r-control); resize: vertical;
   }
   .demo textarea:focus-visible, .demo button:focus-visible, a:focus-visible {
     outline: 2px solid var(--accent); outline-offset: 2px;
   }
   .demo .row { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .7rem; align-items: center; }
   .demo button {
-    min-height: 44px; padding: .55rem 1.1rem; font: inherit; font-size: .95rem; cursor: pointer;
-    color: var(--paper); background: var(--main); border: 0; border-radius: 8px;
+    min-height: 44px; padding: .55rem 1.1rem; font: inherit; font-size: var(--t-base); cursor: pointer;
+    color: var(--paper); background: var(--main); border: 0; border-radius: var(--r-control);
   }
   .demo button.ghost { background: transparent; color: var(--main); border: 1px solid var(--rule); }
   .verdicts { display: grid; gap: .6rem; margin-top: 1rem; }
   @media (min-width: 620px) { .verdicts { grid-template-columns: 1fr 1fr; } }
-  .verdict { border: 1px solid var(--rule); border-radius: 10px; padding: .75rem .9rem; }
-  .verdict h4 { margin: 0 0 .35rem; font-size: .82rem; text-transform: uppercase;
+  .verdict { border: 1px solid var(--rule); border-radius: var(--r-control); padding: .75rem .9rem; }
+  .verdict h4 { margin: 0 0 .35rem; font-size: var(--t-xs); text-transform: uppercase;
                 letter-spacing: .05em; color: var(--muted); }
-  .verdict .answer { font-size: 1rem; font-weight: 600; }
-  .verdict .why { font-family: var(--mono); font-size: .8rem; color: var(--muted); margin-top: .3rem; }
+  .verdict .answer { font-size: var(--t-lg); font-weight: 600; }
+  .verdict .why { font-family: var(--mono); font-size: var(--t-xs); color: var(--muted); margin-top: .3rem; }
   .yes { color: var(--accent); }
   .no  { color: var(--main); }
-  .agree { margin-top: .8rem; font-size: .9rem; }
+  .agree { margin-top: .8rem; font-size: var(--t-md); }
   .examples { margin-top: .9rem; display: flex; flex-wrap: wrap; gap: .4rem; }
-  .examples button { min-height: 44px; font-size: .85rem; padding: .45rem .8rem;
+  .examples button { min-height: 44px; font-size: var(--t-sm); padding: .45rem .8rem;
                      background: transparent; color: var(--ink); border: 1px solid var(--rule); }
   footer {
     margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule);
-    color: var(--muted); font-size: .86rem;
+    color: var(--muted); font-size: var(--t-sm);
   }
 </style>
 </head>
