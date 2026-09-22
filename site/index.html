@@ -8,6 +8,16 @@
 <meta property="og:title" content="Göktuğ Karaca">
 <meta property="og:description" content="I build backend services, and I can tell you how each one fails.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://krcgoktug.github.io/">
+<meta property="og:image" content="https://krcgoktug.github.io/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Göktuğ Karaca — backend engineer">
+<meta name="twitter:description" content="I build backend services, and I can tell you how each one fails.">
+<meta name="twitter:image" content="https://krcgoktug.github.io/social-card.png">
+<link rel="canonical" href="https://krcgoktug.github.io/">
+<meta name="theme-color" content="#1F4B6E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -47,9 +57,11 @@
   .intro { color: var(--muted); margin: 0 0 1.6rem; }
 
   nav.links { display: flex; flex-wrap: wrap; gap: .6rem; }
+  /* 44px is the smallest reliably tappable target; these were 39px on a phone. */
   nav.links a {
-    display: inline-block; padding: .4rem .85rem; border: 1px solid var(--rule);
-    border-radius: 999px; text-decoration: none; color: var(--ink); font-size: .92rem;
+    display: inline-flex; align-items: center; min-height: 44px;
+    padding: .55rem 1rem; border: 1px solid var(--rule);
+    border-radius: 999px; text-decoration: none; color: var(--ink); font-size: .95rem;
   }
   nav.links a:hover { border-color: var(--main); color: var(--main); }
 
@@ -63,17 +75,18 @@
     background: var(--card); border: 1px solid var(--rule); border-radius: 12px;
     padding: 1.15rem 1.3rem; margin-bottom: 1rem;
   }
-  article h3 { margin: 0 0 .3rem; font-size: 1.08rem; }
+  article h3 { margin: 0 0 .3rem; font-size: 1.08rem; line-height: 1.5; }
+  article h3 a { display: inline-block; padding: .25rem 0; }
   article h3 a { color: var(--ink); text-decoration: none; }
   article h3 a:hover { color: var(--main); }
   article p { margin: 0 0 .7rem; font-size: .96rem; }
   .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
   .tag {
-    font-family: var(--mono); font-size: .74rem; color: var(--muted);
+    font-family: var(--mono); font-size: .8rem; color: var(--muted);
     border: 1px solid var(--rule); border-radius: 5px; padding: .1rem .45rem;
   }
   .evidence { border-left: 3px solid var(--accent); padding-left: .85rem; margin: .8rem 0 0; }
-  .evidence code { font-family: var(--mono); font-size: .82rem; color: var(--muted); }
+  .evidence code { font-family: var(--mono); font-size: .85rem; color: var(--muted); }
 
   .pending {
     border: 1px dashed var(--rule); border-radius: 12px; padding: 1.1rem 1.3rem;
@@ -81,6 +94,37 @@
   }
   a { color: var(--main); text-underline-offset: 3px; }
   a:hover { color: var(--accent); }
+
+  /* --- the one dynamic feature --- */
+  .demo { border: 1px solid var(--rule); border-radius: 12px; padding: 1.2rem 1.3rem; background: var(--card); }
+  .demo label { display: block; font-size: .9rem; color: var(--muted); margin-bottom: .4rem; }
+  .demo textarea {
+    width: 100%; min-height: 76px; padding: .7rem .85rem; font: inherit; font-size: .95rem;
+    color: var(--ink); background: var(--paper); border: 1px solid var(--rule);
+    border-radius: 8px; resize: vertical;
+  }
+  .demo textarea:focus-visible, .demo button:focus-visible, a:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px;
+  }
+  .demo .row { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .7rem; align-items: center; }
+  .demo button {
+    min-height: 44px; padding: .55rem 1.1rem; font: inherit; font-size: .95rem; cursor: pointer;
+    color: var(--paper); background: var(--main); border: 0; border-radius: 8px;
+  }
+  .demo button.ghost { background: transparent; color: var(--main); border: 1px solid var(--rule); }
+  .verdicts { display: grid; gap: .6rem; margin-top: 1rem; }
+  @media (min-width: 620px) { .verdicts { grid-template-columns: 1fr 1fr; } }
+  .verdict { border: 1px solid var(--rule); border-radius: 10px; padding: .75rem .9rem; }
+  .verdict h4 { margin: 0 0 .35rem; font-size: .82rem; text-transform: uppercase;
+                letter-spacing: .05em; color: var(--muted); }
+  .verdict .answer { font-size: 1rem; font-weight: 600; }
+  .verdict .why { font-family: var(--mono); font-size: .8rem; color: var(--muted); margin-top: .3rem; }
+  .yes { color: var(--accent); }
+  .no  { color: var(--main); }
+  .agree { margin-top: .8rem; font-size: .9rem; }
+  .examples { margin-top: .9rem; display: flex; flex-wrap: wrap; gap: .4rem; }
+  .examples button { min-height: 44px; font-size: .85rem; padding: .45rem .8rem;
+                     background: transparent; color: var(--ink); border: 1px solid var(--rule); }
   footer {
     margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule);
     color: var(--muted); font-size: .86rem;
@@ -158,6 +202,42 @@
   <div class="evidence"><code>a row survives docker compose down &amp;&amp; up, via a named volume</code></div>
 </article>
 
+
+<h2>Try it: does this commit record a mistake?</h2>
+<p class="section-note">
+  A live piece of the <a href="https://github.com/krcgoktug/flyrank-commit-triage">commit triage</a>
+  service. Type a commit message and the keyword rule runs here in your browser, instantly.
+  The model verdicts beside it are <strong>recorded from real runs</strong> &mdash; the model
+  itself runs on my machine, not on this page, and that limit is explained below.
+</p>
+
+<div class="demo">
+  <label for="msg">Commit message</label>
+  <textarea id="msg" spellcheck="false">Add a prefix to every cache key so tenants cannot read each other&#39;s rows</textarea>
+
+  <div class="row">
+    <button id="run" type="button">Classify</button>
+    <button id="clear" type="button" class="ghost">Clear</button>
+  </div>
+
+  <div class="examples" id="examples"></div>
+
+  <div class="verdicts">
+    <div class="verdict">
+      <h4>Keyword rule (runs here, live)</h4>
+      <div class="answer" id="kw">&mdash;</div>
+      <div class="why" id="kwwhy">waiting for input</div>
+    </div>
+    <div class="verdict">
+      <h4>Model (recorded run)</h4>
+      <div class="answer" id="ml">&mdash;</div>
+      <div class="why" id="mlwhy">only the eight recorded cases have a model verdict</div>
+    </div>
+  </div>
+
+  <p class="agree" id="agree"></p>
+</div>
+
 <h2>Writing</h2>
 <p class="section-note">Case studies in the four-beat shape: the problem, what I did, what came of it, and what I got wrong.</p>
 <div class="pending">
@@ -191,5 +271,98 @@
 </footer>
 
 </div>
+
+<script>
+// The keyword rule, ported verbatim from the fallback in judge.py. It is the thing the
+// model call exists to beat, so it is worth being able to run it yourself.
+var FALSE_FRIENDS = ["prefix", "suffix", "affix", "fixture", "fixed-width", "fixed width"];
+var MISTAKE_WORDS = ["fix", "bug", "revert", "regression", "broken", "wrong", "crash",
+                     "typo", "hotfix", "patch", "mistake", "incorrect", "fault"];
+
+function keywordVerdict(text) {
+  var t = (text || "").toLowerCase();
+  FALSE_FRIENDS.forEach(function (f) { t = t.split(f).join(""); });
+  for (var i = 0; i < MISTAKE_WORDS.length; i++) {
+    if (t.indexOf(MISTAKE_WORDS[i]) !== -1) {
+      return { mistake: true, why: 'matched "' + MISTAKE_WORDS[i] + '"' };
+    }
+  }
+  return { mistake: false, why: "no keyword matched" };
+}
+
+// Verdicts actually produced by qwen2.5:7b through the /classify endpoint, copied from
+// docs/test-cases.txt. Nothing here is invented: a message outside this list shows no
+// model verdict rather than a guessed one.
+var RECORDED = [
+  { m: "Fix mobile overflow on the live page", mistake: true, cat: "bugfix", conf: 0.95 },
+  { m: "Harden the centering, and correct the previous commit message. The previous commit said it fixed a mobile overflow. It did not, because there was no overflow.", mistake: true, cat: "bugfix", conf: 0.95 },
+  { m: "Stage 1: signup and login routes working", mistake: false, cat: "feature", conf: 0.8 },
+  { m: "Stage 6: publish to GitHub and write README", mistake: false, cat: "docs", conf: 0.8 },
+  { m: "Add a prefix to every cache key so tenants cannot read each other's rows", mistake: false, cat: "feature", conf: 0.8 },
+  { m: "Stage 5: 60 clean records collected. Also corrects the first run, where the site sends no charset so every currency symbol came out as two characters.", mistake: true, cat: "bugfix", conf: 0.95 },
+  { m: 'Revert "Stage 4: auth middleware and logout endpoint"', mistake: true, cat: "revert", conf: 1.0 },
+  { m: "wip", mistake: false, cat: "unknown", conf: 0.5 }
+];
+
+function norm(s) { return (s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); }
+
+function findRecorded(text) {
+  var n = norm(text);
+  for (var i = 0; i < RECORDED.length; i++) {
+    if (norm(RECORDED[i].m) === n) return RECORDED[i];
+  }
+  return null;
+}
+
+function el(id) { return document.getElementById(id); }
+
+function classify() {
+  var text = el("msg").value;
+  var kw = keywordVerdict(text);
+
+  el("kw").innerHTML = text.trim()
+    ? '<span class="' + (kw.mistake ? "yes" : "no") + '">' +
+      (kw.mistake ? "records a mistake" : "no mistake") + "</span>"
+    : "&mdash;";
+  el("kwwhy").textContent = text.trim() ? kw.why : "waiting for input";
+
+  var rec = findRecorded(text);
+  if (rec) {
+    el("ml").innerHTML = '<span class="' + (rec.mistake ? "yes" : "no") + '">' +
+      (rec.mistake ? "records a mistake" : "no mistake") + "</span>";
+    el("mlwhy").textContent = rec.cat + " - confidence " + rec.conf;
+    el("agree").innerHTML = (rec.mistake === kw.mistake)
+      ? "Both agree on this one."
+      : "<strong>They disagree &mdash; and the model is right.</strong> " +
+        "This is a case the keyword rule gets wrong.";
+  } else {
+    el("ml").textContent = "not recorded";
+    el("mlwhy").textContent = "the model runs on my machine; this page will not invent a verdict";
+    el("agree").textContent = "";
+  }
+}
+
+var PICKS = [
+  { label: "the false positive", m: "Add a prefix to every cache key so tenants cannot read each other's rows" },
+  { label: "the false negative", m: "Stage 5: 60 clean records collected. Also corrects the first run, where the site sends no charset so every currency symbol came out as two characters." },
+  { label: "a plain fix", m: "Fix mobile overflow on the live page" },
+  { label: "a revert", m: 'Revert "Stage 4: auth middleware and logout endpoint"' },
+  { label: "no information", m: "wip" }
+];
+
+var box = el("examples");
+PICKS.forEach(function (p) {
+  var b = document.createElement("button");
+  b.type = "button";
+  b.textContent = p.label;
+  b.addEventListener("click", function () { el("msg").value = p.m; classify(); });
+  box.appendChild(b);
+});
+
+el("run").addEventListener("click", classify);
+el("clear").addEventListener("click", function () { el("msg").value = ""; classify(); });
+el("msg").addEventListener("input", classify);
+classify();
+</script>
 </body>
 </html>
