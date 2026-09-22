@@ -88,6 +88,12 @@
     border-radius: var(--r-pill); text-decoration: none; color: var(--ink); font-size: var(--t-base);
   }
   nav.links a:hover { border-color: var(--main); color: var(--main); }
+  /* The page asks for exactly one thing. Five identical pills meant it asked for five
+     things equally, so the one that matters now carries the weight. */
+  nav.links a.primary {
+    background: var(--main); border-color: var(--main); color: var(--paper); font-weight: 600;
+  }
+  nav.links a.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
 
   h2 {
     font-size: var(--t-2xl); margin: 3rem 0 .4rem; letter-spacing: -.01em;
@@ -190,7 +196,7 @@
     <a href="https://github.com/krcgoktug">GitHub</a>
     <a href="https://www.linkedin.com/in/g%C3%B6ktu%C4%9F-karaca-921479249">LinkedIn</a>
     <a href="https://www.goktugkaraca.com/resume">View my CV</a>
-    <a href="mailto:karacagoktug73@gmail.com?subject=20-minute%20technical%20conversation&amp;body=Hi%20G%C3%B6ktu%C4%9F%2C%0A%0AI%27d%20like%20to%20book%20a%2020-minute%20technical%20conversation.%20These%20times%20work%20for%20me%3A%0A">Book 20 minutes</a>
+    <a class="primary" href="mailto:karacagoktug73@gmail.com?subject=20-minute%20technical%20conversation&amp;body=Hi%20G%C3%B6ktu%C4%9F%2C%0A%0AI%27d%20like%20to%20book%20a%2020-minute%20technical%20conversation.%20These%20times%20work%20for%20me%3A%0A">Book 20 minutes</a>
     <a href="mailto:karacagoktug73@gmail.com">Email</a>
   </nav>
 </header>
@@ -293,10 +299,13 @@
 </div>
 
 <h2>Capstone</h2>
-<div class="pending">
-  Two capstones are submitted and in review: the metering and billing engine above, and an
-  AI Fluency impact project. The FlyRank completion badge lands here once the review is done.
-</div>
+<p>
+  Both capstones were accepted. The <a href="https://github.com/krcgoktug/flyrank-capstone-metering-billing">metering
+  and billing engine</a> above is the backend one. The second is an
+  <a href="https://github.com/krcgoktug/flyrank-capstone-fluency">AI Fluency impact project</a> — less a deliverable
+  than a habit: a written process for adding the next case study, the next piece already named, and a monthly
+  reminder that is actually running rather than intended. The credential is in the footer, and it can be checked.
+</p>
 
 <h2>Contact</h2>
 <p>
